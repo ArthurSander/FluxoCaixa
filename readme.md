@@ -29,7 +29,7 @@ Para realizar a comunicação assíncrona via mensageria foi utilizado o RabbitM
 ## <a name="frameworks-libraries"></a> Frameworks/Libraries
 
 ### Serilog - [GitHub](https://github.com/serilog/serilog) 
-Biblioteca de Logging completa e compatível com diversas saídas como Console, File, ElasticSearch, entre outras.
+Biblioteca de Logging completa e compatível com diversas saídas como Console, Arquivos, ElasticSearch, entre outras.
 
 ### FluentResults - [GitHub](https://github.com/altmann/FluentResults)
 Biblioteca para facilitar o tráfego de informações e resultados de operações durante a execução dos fluxos da aplicação.
