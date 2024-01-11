@@ -148,7 +148,7 @@ Passo a passo:
 - Download Relatório: Realiza o download do relatório solicitado. Retorna o arquivo do relatório consolidado.
 
 ## <a name="testes"></a> Testes
-Foram desenvolvidos os seguintes tipos de testes para exemplificar cada um desses tipos de teste. Por questões de tempo, não foi ampliada a cobertura de testes. O planejamento para cada um deles será apresentado na sequência de cada um:
+Foram desenvolvidos os seguintes tipos de testes para exemplificar cada um desses tipos de teste. Por questões de tempo, não foi ampliada a cobertura de testes. O planejamento para cada um deles será apresentado em suas descrições:
 
 ### Unitários
 Testam todas as possibilidades de execução de um método, de forma isolada. Validam se as chamadas internas necessárias foram realizadas.
