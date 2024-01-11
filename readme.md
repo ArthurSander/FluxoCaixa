@@ -24,12 +24,12 @@ Para persistir as informações foi utilizado o banco relacional MS SQL Server 2
 Para facilitar a distribuição e escalabilidade da aplicação, foi utilizado o [Docker](https://www.docker.com/) como tecnologia para construir a solução com containers.
 
 ### RabbitMQ
-Para realizar a comunicação assíncrona via mensageria foi utilizado o RabbitMQ (Versão 3), por ser uma ferramenta extremamente popular, ter suporte através de diversos frameworks para .NET e open-source, facilitando o processo de implementar no projeto.
+Para realizar a comunicação assíncrona via mensageria foi utilizado o RabbitMQ (Versão 3), por ser uma ferramenta extremamente popular, ter suporte através de diversos frameworks para .NET e é open-source, facilitando o processo de implementação no projeto.
 
 ## <a name="frameworks-libraries"></a> Frameworks/Libraries
 
 ### Serilog - [GitHub](https://github.com/serilog/serilog) 
-Biblioteca de Logging completa e compatível com diversas saídas como Console, File, ElasticSearch, entre outras.
+Biblioteca de Logging completa e compatível com diversas saídas como Console, Arquivos, ElasticSearch, entre outras.
 
 ### FluentResults - [GitHub](https://github.com/altmann/FluentResults)
 Biblioteca para facilitar o tráfego de informações e resultados de operações durante a execução dos fluxos da aplicação.
@@ -59,7 +59,7 @@ A aplicação foi projetada de forma robusta para habilitar a aplicação a esca
 Para realizar essa tarefa, a arquitetura foi planejada utilizando os seguintes conceitos e padrões arquiteturais:
 - DDD
     - Parcialmente: Não haveria tempo nem necessidade de mapear a linguagem ubíqua para esse projeto.
-- Clean Architechture
+- Clean Architecture
 - Publish-Subscriber
     - Para fins demosntrativos, foram mapeados os principais eventos do sistema e seu envio. O único evento utilizado é o `RelatorioCriado`, para ser consumido e gerar o arquivo do relatório.
 - CQRS 
@@ -75,7 +75,7 @@ Para realizar essa tarefa, a arquitetura foi planejada utilizando os seguintes c
 
 Vale mencionar que a arquitetura foi planejada visando demonstrar o exemplo de uma aplicação que teria um longo ciclo de vida e, em pouco tempo após a primeira entrega, várias features adicionadas.
 
-Caso o sistema fosse planejado como um contrato único e rápido, sem grandes chances de expansão, a arquitetura seria consideravelmente mais simples, implementando algo como três camadas com inversão do domínio + Pub-Sub para realizar um fluxo parecido com o envio da mensagem de criação de relatório. Ir além disso numa situação como essa seria contraprodutivo.
+Caso o sistema fosse planejado como um contrato único e rápido, sem grandes chances de expansão, a arquitetura seria consideravelmente mais simples, implementando algo como três camadas + Pub-Sub para realizar um fluxo parecido com o envio da mensagem de criação de relatório. Ir além disso numa situação como essa seria contraprodutivo.
 
 ### Estrutura do projeto
 ![image](./Docs/Arquitetura/EstruturaProjeto.jpg)
@@ -165,7 +165,7 @@ Os testes de integração estão no projeto `FluxoCaixa.Tests.Integrations`
 ### End-to-End
 Testam a execução da aplicação de ponta-a-ponta, com toda a infraestrutura configurada e ativa. Tem seu ponto de entrada nos endpoints da API, utilizando seu retorno como meio de validação. Normalmente são compostos de fluxos de várias requisições, montando assim um fluxo de uso padrão do sistema.
 
-O planejamento seria desenvolver várias sequências de requisições, representando fluxos como Criar Caixa + Adicionar X Lançamentos + Consultar Saldo, validando se o saldo calculado e informado corretamente.
+O planejamento seria desenvolver várias sequências de requisições, representando fluxos como Criar Caixa + Adicionar X Lançamentos + Consultar Saldo, validando se o saldo foi calculado e informado corretamente.
 
 Por praticidade, os testes End-to-End foram desenvolvidos no Postman. Para executá-los, realize o [download](./Docs/PostmanCollections/Fluxo%20Completo%20Sucesso%20-%20Sem%20Saldo%20Inicial.postman_collection.json) da coleção e execute a coleção:
 ![image](./Docs/Uteis/RunColecaoPostman.jpg)
@@ -200,3 +200,4 @@ Para agilizar o desenvolvimento do projeto, algumas questões importantes, mas n
     - Essa implementação melhoraria a performance da rota de inserção de lançamentos e possibilitaria a validação de cada um deles, sem comprometer a confiabilidade do saldo.
 - Implementar Graceful Shutdown para o Worker
     - Considerado pelo fato de existir a possibilidade do Worker ser encerrado abruptamente - assim a geração dos relatórios que estiverem em andamento seria encerrada de forma controlada.
+- Implementação do ELK como serviço principal de visualização de logs.
