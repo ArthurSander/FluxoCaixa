@@ -128,7 +128,7 @@ Pré-Requisitos:
 Passo a passo:
 - Clone o projeto localmente
 - Com o docker em execução, entre na pasta raiz do projeto e execute o comando `docker-compose up -d`
-- Aguarde o download/build das imagens
+- Aguarde o download, build e carregamento completo das imagens
 - Para facilitar o uso, baixe a [coleção do Postman](./Docs/PostmanCollections/Fluxo%20Caixa%20API.postman_collection) e importe ela para ter acesso à todas as rotas disponíveis.
     - Uma alternativa é testar a aplicação utilizando o Swagger, diponibilizado na rota http://localhost:5000/swagger/index.html
 ## <a name="casos-uso"></a> Use Cases
@@ -173,6 +173,8 @@ Por praticidade, os testes End-to-End foram desenvolvidos no Postman. Para execu
 Antes de rodar os testes, configure 1 segundo (1000ms) de delay entre requisições para evitar problemas com a validação da geração do relatório:
 
 ![image](./Docs/Uteis/ExecucaoTestesEndToEnd.jpg)
+
+Caso o teste do relatório apresente problemas com a configuração apresentada acima, aumente gradualmente o delay entre as requisições - isso pode ser causado pela capacidade da máquina e/ou configuração do WSL presente no ambiente local.
 ### Carga
 Testam a performance e capacidade de lidar com cargas pré-definidas de requisições em rotas específicas ou no sistema como um todo.
 
