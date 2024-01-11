@@ -165,7 +165,7 @@ Os testes de integração estão no projeto `FluxoCaixa.Tests.Integrations`
 ### End-to-End
 Testam a execução da aplicação de ponta-a-ponta, com toda a infraestrutura configurada e ativa. Tem seu ponto de entrada nos endpoints da API, utilizando seu retorno como meio de validação. Normalmente são compostos de fluxos de várias requisições, montando assim um fluxo de uso padrão do sistema.
 
-O planejamento seria desenvolver várias sequências de requisições, representando fluxos como Criar Caixa + Adicionar X Lançamentos + Consultar Saldo, validando se o saldo calculado e informado corretamente.
+O planejamento seria desenvolver várias sequências de requisições, representando fluxos como Criar Caixa + Adicionar X Lançamentos + Consultar Saldo, validando se o saldo foi calculado e informado corretamente.
 
 Por praticidade, os testes End-to-End foram desenvolvidos no Postman. Para executá-los, realize o [download](./Docs/PostmanCollections/Fluxo%20Completo%20Sucesso%20-%20Sem%20Saldo%20Inicial.postman_collection.json) da coleção e execute a coleção:
 ![image](./Docs/Uteis/RunColecaoPostman.jpg)
