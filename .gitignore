@@ -133,5 +133,5 @@ $RECYCLE.BIN/
 _NCrunch*
 
 AppData/
-relatorios/
+./relatorios/
 .vs
