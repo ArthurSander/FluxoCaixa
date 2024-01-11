@@ -187,6 +187,7 @@ Para agilizar o desenvolvimento do projeto, algumas questões importantes, mas n
     - Para um sistema web como esse, é de suma importância configurar a autenticação do sistema. Seria desenvolvida utilizado o Identity do ASP.NET pela agilidade, fácil customização das informações/roles e compatibilidade nativa com o framework.
 - Conversão de Enum para Texto para melhorar relatório
 - Middleware de tratamento de exceções
+- Implementar relatório em formato CSV
 - Implementar lógica para não reprocessar relatórios da mesma data e mesmo caixa
 - Separar a solicitação de lançamento do cálculo do lançamento
     - Considerando que nos dias de pico o sistema poderá chegar à 500 requests por segundo, o cálculo do lançamento sendo executado de forma síncrona com a criação do registro do lançamento pode se tornar um problema, tanto de performance quanto pela regra de negócio de invalidar débitos que causassem um saldo negativo. A solução proposta seria separar a solicação do lançamento do cálculo do saldo. Detalhes:
