@@ -1,12 +1,12 @@
 # Sistema de controle de Fluxo de Caixa
-Projeto de controle de Fluxo de Caixa em .NET 8 utilizando Docker, SQL Server, RabbitMQ.
+Projeto de controle de Fluxo de Caixa em .NET 8 utilizando Docker, SQL Server e RabbitMQ.
 
 ## Índice
 - [Tecnologias](#tecnologias)
-- [Frameworks/Libraries](#frameworkslibraries)
+- [Frameworks/Libraries](#frameworks-libraries)
 - [Arquitetura](#arquitetura)
-- [Contextualização do projeto](#contextualização-do-projeto)
-- [Executando o Projeto](#executando-o-projeto)
+- [Contextualização do projeto](#contexto-projeto)
+- [Executando o Projeto](#executando-projeto)
 - [Use Cases](#casos-uso)
 - [Testes](#testes)
 - [Evoluções do projeto e observações finais](#evoluções)
