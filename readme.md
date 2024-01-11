@@ -59,7 +59,7 @@ A aplicação foi projetada de forma robusta para habilitar a aplicação a esca
 Para realizar essa tarefa, a arquitetura foi planejada utilizando os seguintes conceitos e padrões arquiteturais:
 - DDD
     - Parcialmente: Não haveria tempo nem necessidade de mapear a linguagem ubíqua para esse projeto.
-- Clean Architechture
+- Clean Architecture
 - Publish-Subscriber
     - Para fins demosntrativos, foram mapeados os principais eventos do sistema e seu envio. O único evento utilizado é o `RelatorioCriado`, para ser consumido e gerar o arquivo do relatório.
 - CQRS 
