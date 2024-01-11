@@ -198,3 +198,4 @@ Para agilizar o desenvolvimento do projeto, algumas questões importantes, mas n
     - Essa implementação melhoraria a performance da rota de inserção de lançamentos e possibilitaria a validação de cada um deles, sem comprometer a confiabilidade do saldo.
 - Implementar Graceful Shutdown para o Worker
     - Considerado pelo fato de existir a possibilidade do Worker ser encerrado abruptamente - assim a geração dos relatórios que estiverem em andamento seria encerrada de forma controlada.
+- Implementação do ELK como serviço principal de visualização de logs.
