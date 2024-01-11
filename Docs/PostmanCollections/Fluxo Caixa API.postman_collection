@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "9e4e61dc-5571-41d8-9cc0-2e49393e867f",
+		"name": "Fluxo de Caixa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FluxoCaixa",
+			"item": [
+				{
+					"name": "Criar Caixa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var result = pm.response.json();\r",
+									"var caixa = result.resultado.caixa;\r",
+									"pm.collectionVariables.set(\"id_caixa\",caixa.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Nome da Caixa\",\r\n  \"saldo_inicial\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/fluxo_caixa/caixas",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"fluxo_caixa",
+								"caixas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Lançamento - Débito",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Descrição débito 1\",\r\n  \"valor\": 200,\r\n  \"tipo_lancamento\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/fluxo_caixa/caixas/{{id_caixa}}/lancamentos",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"fluxo_caixa",
+								"caixas",
+								"{{id_caixa}}",
+								"lancamentos"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Lançamento - Crédito",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Descrição crédito 1\",\r\n  \"valor\": 500,\r\n  \"tipo_lancamento\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/fluxo_caixa/caixas/{{id_caixa}}/lancamentos",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"fluxo_caixa",
+								"caixas",
+								"{{id_caixa}}",
+								"lancamentos"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Saldo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/fluxo_caixa/caixas/{{id_caixa}}/saldo",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"fluxo_caixa",
+								"caixas",
+								"{{id_caixa}}",
+								"saldo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Relatorios",
+			"item": [
+				{
+					"name": "Solicitar Relatorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var result = pm.response.json().resultado;\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_relatorio\", result.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_caixa\": {{id_caixa}},\r\n  \"tipo_relatorio\": 1,\r\n  \"data_relatorio\": \"2024-01-09\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/relatorios",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"relatorios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/relatorios/{{id_relatorio}}/status",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"relatorios",
+								"{{id_relatorio}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Relatório",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/relatorios/7/download",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"relatorios",
+								"7",
+								"download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/healthcheck",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "http://localhost:5000/api",
+			"type": "default"
+		},
+		{
+			"key": "id_caixa",
+			"value": "1"
+		}
+	]
+}

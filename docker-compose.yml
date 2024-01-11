@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - ./AppData/Volumes/mssql:/var/opt/mssql/data
+    environment:
+      SA_PASSWORD: "CashFlow@2024"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    volumes:
+      - ./AppData/Volumes/rabbitmq:/var/opt/rabbitmq/
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: CashFlow@2024
+      RABBITMQ_DEFAULT_VHOST: /
+
+  fluxo_caixa_api:
+    restart: always
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    build:
+      dockerfile: FluxoCaixa.Presentation.API/Dockerfile
+      context: .
+    ports:
+      - "5000:8080"
+      - "5001:8081"
+    volumes:
+      - shared-volume:/app/relatorios
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DEFAULT_CONNECTION_STRING: "Server=sqlserver,1433;Database=FluxoCaixa;User Id=sa;Password=CashFlow@2024;TrustServerCertificate=True"
+      RABBITMQ_HOSTNAME: "rabbitmq"
+      RABBITMQ_USER: "admin"
+      RABBITMQ_PASSWORD: "CashFlow@2024"
+      RELATORIOS_DIRECTORY: "/app/relatorios"
+
+  relatorios_worker:
+    restart: always
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    build: 
+      dockerfile: FluxoCaixa.Workers.MessageConsumer/Dockerfile
+      context: .
+    volumes:
+      - shared-volume:/app/relatorios
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DEFAULT_CONNECTION_STRING: "Server=sqlserver,1433;Database=FluxoCaixa;User Id=sa;Password=CashFlow@2024;TrustServerCertificate=True"
+      RABBITMQ_HOSTNAME: "rabbitmq"
+      RABBITMQ_USER: "admin"
+      RABBITMQ_PASSWORD: "CashFlow@2024"
+      RELATORIOS_DIRECTORY: "/app/relatorios"
+volumes:
+  shared-volume:
