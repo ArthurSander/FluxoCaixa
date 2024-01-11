@@ -24,7 +24,7 @@ Para persistir as informações foi utilizado o banco relacional MS SQL Server 2
 Para facilitar a distribuição e escalabilidade da aplicação, foi utilizado o [Docker](https://www.docker.com/) como tecnologia para construir a solução com containers.
 
 ### RabbitMQ
-Para realizar a comunicação assíncrona via mensageria foi utilizado o RabbitMQ (Versão 3), por ser uma ferramenta extremamente popular, ter suporte através de diversos frameworks para .NET e é open-source, facilitando o processo de implementar no projeto.
+Para realizar a comunicação assíncrona via mensageria foi utilizado o RabbitMQ (Versão 3), por ser uma ferramenta extremamente popular, ter suporte através de diversos frameworks para .NET e é open-source, facilitando o processo de implementação no projeto.
 
 ## <a name="frameworks-libraries"></a> Frameworks/Libraries
 
