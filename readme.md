@@ -75,7 +75,7 @@ Para realizar essa tarefa, a arquitetura foi planejada utilizando os seguintes c
 
 Vale mencionar que a arquitetura foi planejada visando demonstrar o exemplo de uma aplicação que teria um longo ciclo de vida e, em pouco tempo após a primeira entrega, várias features adicionadas.
 
-Caso o sistema fosse planejado como um contrato único e rápido, sem grandes chances de expansão, a arquitetura seria consideravelmente mais simples, implementando algo como três camadas com inversão do domínio + Pub-Sub para realizar um fluxo parecido com o envio da mensagem de criação de relatório. Ir além disso numa situação como essa seria contraprodutivo.
+Caso o sistema fosse planejado como um contrato único e rápido, sem grandes chances de expansão, a arquitetura seria consideravelmente mais simples, implementando algo como três camadas + Pub-Sub para realizar um fluxo parecido com o envio da mensagem de criação de relatório. Ir além disso numa situação como essa seria contraprodutivo.
 
 ### Estrutura do projeto
 ![image](./Docs/Arquitetura/EstruturaProjeto.jpg)
